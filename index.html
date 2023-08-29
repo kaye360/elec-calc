@@ -1,13 +1,81 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
-  </head>
-  <body class="bg-sky-50">
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+<html lang="en" class="scroll-smooth">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>ElecCalc - Electrical Calculator</title>
+</head>
+
+<body class="bg-sky-50">
+
+	<div id="root"></div>
+
+	<main id="content" class="relative grid gap-6 max-w-lg mx-auto border border-sky-200 p-6 rounded-xl">
+
+		<div class="sticky top-2 grid gap-2">
+			<a href="#root" class="flex items-center gap-2 justify-center bg-sky-300 hover:bg-rose-300 rounded-lg py-2 font-semibold text-sky-900 hover:text-rose-900 text-center">
+				<span>
+					View App
+				</span>
+				<svg width="17" height="21" viewBox="0 0 17 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+					<path d="M8.5 19H3C2.46957 19 1.96086 18.7893 1.58579 18.4142C1.21071 18.0391 1 17.5304 1 17V3C1 2.46957 1.21071 1.96086 1.58579 1.58579C1.96086 1.21071 2.46957 1 3 1H11C11.5304 1 12.0391 1.21071 12.4142 1.58579C12.7893 1.96086 13 2.46957 13 3V10M14 14L12 17H16L14 20M6 2H8M7 15V15.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</a>
+		</div>
+
+		<h1 class="text-3xl bg-sky-950 text-sky-100 px-4 py-8 rounded-xl">
+			Introducing ElecCalc - Your Ultimate Electrical Calculator App
+		</h1>
+
+		<p>
+			Are you tired of spending precious time manually crunching numbers for your electrical projects? Say goodbye to complex calculations and hello to effortless precision with SparkCalc, the cutting-edge Electrical Calculator App designed to supercharge your workflow! Enjoy the following features:
+		</p>
+
+		<h2 class="font-semibold text-xl">Metric to Imperial Conversion</h2>
+		<p>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit iusto consequatur nemo reiciendis esse autem modi nulla necessitatibus perspiciatis delectus.
+		</p>
+
+		<h2 class="font-semibold text-xl">Voltage Drop Calculator</h2>
+		<p>
+			Lorem ipsum dolor, sit amet consectetur adipisicing elit. Modi delectus iste assumenda quod! Inventore, facilis? Lorem ipsum dolor sit amet consectetur, adipisicing elit. Debitis perspiciatis quod sequi est illum!
+		</p>
+
+		<h2 class="font-semibold text-xl">Wire Ampacity Calculator</h2>
+		<p>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi molestias a iste earum consectetur libero alias quo! Delectus animi labore sunt.
+		</p>
+
+		<h2 class="font-semibold text-xl">Conduit Fill Calculator</h2>
+		<p>
+			Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatibus saepe beatae odit laudantium quis hic esse fugiat omnis eos laboriosam, accusantium cupiditate!
+		</p>
+
+		<h2 class="font-semibold text-xl">Conduit Bending Calculator</h2>
+		<p>
+			Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus error vero alias et ducimus fuga perspiciatis magnam voluptates enim. Atque aliquid quae magnam?
+		</p>
+
+		<h2 class="font-semibold text-xl">Box Fill Calculator</h2>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore laboriosam fugiat ab mollitia distinctio assumenda ipsa perspiciatis, non tempora!
+		</p>
+
+		<a href="https://joshkaye.dev" class="hover:underline">
+			Web app by Josh Kaye
+		</a>
+
+	</main>
+
+	<script type="module" src="/src/main.jsx"></script>
+
+	<script>
+		const mainContent = document.querySelector('#content')
+		mainContent.style.marginTop = '100vh'
+		setTimeout( () => mainContent.style.marginTop = '30vh', 1000 )
+	</script>
+</body>
+
 </html>

@@ -8,11 +8,11 @@ export default function Main({children} : { children : ReactNode}) {
     const isBackLink =  location.pathname === '/' || location.state?.backlink === true
 
     return (
-		<motion.main
+		<motion.div
 			initial={{ opacity: 0, x: isBackLink ? -100 : 100 }}
 			animate={{ opacity: 1, x: 0 }}
 		>
             {children}
-        </motion.main>
+        </motion.div>
     )
 }

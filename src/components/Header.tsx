@@ -5,20 +5,14 @@ import { Link } from "react-router-dom";
 export default function Header() {
 	return (
 		<motion.header 
-			className="flex items-center justify-between py-4 px-2 bg-sky-900 text-slate-50"
+			className="flex items-center justify-center py-4 px-2 bg-sky-900 text-slate-50 rounded-b-xl"
 			initial={{ opacity: 0, y: -100 }}
 			animate={{ opacity: 1, y: 0 }}
 		>  
-			<span>
-				<Link to="/" className="flex items-center gap-1 text-sky-100 text-lg font-semibold tracking-wider hover:underline">
-					<Logo />
-					ElecCalc
-				</Link>
-			</span>
-
-			<button>
-				Menu
-			</button>
+			<Link to="/" className="flex items-center gap-1 text-sky-100 text-lg font-semibold tracking-wider hover:underline">
+				<Logo />
+				ElecCalc
+			</Link>
 		</motion.header>
 	)
 }
