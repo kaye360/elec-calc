@@ -29,17 +29,17 @@ export default function Home() {
 					Conduit
 				</Feature>
 
-				<Feature href="/boxes" className="text-rose-500">
+				<Feature href="/boxes" className="text-emerald-500">
 					<BoxIcon />
 					Boxes
 				</Feature>
 
-				<Feature href="receptacles" className="text-slate-500">
+				<Feature href="receptacles" className="text-fuchsia-500">
 					<ReceptacleIcon />
 					Receptacles
 				</Feature>
 
-				<Feature href="/residential-checklist" className="text-sky-500">
+				<Feature href="/residential-checklist" className="text-amber-500">
 					<ResidentialChecklistIcon />
 					Residential Checklist
 				</Feature>
