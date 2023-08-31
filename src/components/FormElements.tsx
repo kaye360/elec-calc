@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import React, { MouseEventHandler, ReactNode } from 'react'
 
 
-export const formElementClassName = "mb-4 px-2 py-4 text-xl rounded-xl w-full border border-sky-400 bg-white"
+export const formElementClassName = "mb-4 px-2 py-4 text-xl rounded-xl w-full border border-sky-800 bg-sky-950 text-sky-100"
 
 
 

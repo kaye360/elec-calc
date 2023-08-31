@@ -1,54 +1,49 @@
 import React, { ReactNode } from "react"
 import { Link } from "react-router-dom"
 import Main from "../components/Main"
-import PageHeading from "../components/PageHeading"
 
 export default function Home() {
 
 	return (
 		<Main>
 
-			<PageHeading>
-				Home
-			</PageHeading>
+			<div className="grid grid-cols-[repeat(auto-fit,minmax(125px,1fr))] gap-4 mt-6 font-semibold text-slate-700">
 
-			<div className="grid grid-cols-[repeat(auto-fit,minmax(100px,1fr))] gap-4 font-semibold text-slate-700">
-
-				<Feature href="/metric-imperial-converter" className="text-rose-500">
+				<Feature href="/metric-imperial-converter" className="text-rose-300">
 					<MetricToImperialConverterIcon />
 					Metric to Imperial Conversion
 				</Feature>
 
-				<Feature href="/wire" className="text-slate-500">	
+				<Feature href="/wire" className="text-slate-300">	
 					<WireIcon />
 					Wire
 				</Feature>
 
-				<Feature href="/conduit" className="text-sky-500">
+				<Feature href="/conduit" className="text-sky-300">
 					<ConduitIcon />
 					Conduit
 				</Feature>
 
-				<Feature href="/boxes" className="text-emerald-500">
+				<Feature href="/boxes" className="text-emerald-300">
 					<BoxIcon />
 					Boxes
 				</Feature>
 
-				<Feature href="receptacles" className="text-fuchsia-500">
+				<Feature href="receptacles" className="text-fuchsia-300">
 					<ReceptacleIcon />
 					Receptacles
 				</Feature>
 
-				<Feature href="/residential-checklist" className="text-amber-500">
+				<Feature href="/residential-checklist" className="text-amber-300">
 					<ResidentialChecklistIcon />
 					Residential Checklist
 				</Feature>
 				
-				<Feature href="/motors" className="opacity-25">
+				<Feature href="/motors" className="text-sky-200">
 					Motors
 				</Feature>
 
-				<Feature href="/transformers" className=" opacity-25">
+				<Feature href="/transformers" className=" text-sky-200">
 					Transformers
 				</Feature>
 
@@ -68,7 +63,7 @@ interface Feature {
 
 function Feature({href, className='', children, ...rest} : Feature) {
 	return(
-		<Link to={href} className={`border border-sky-200 hover:bg-sky-100 hover:bg-opacity-70 hover:scale-110 transition-all grid place-items-center gap-2 h-full p-4 text-center rounded-xl leading-4 ${className}`} {...rest}>
+		<Link to={href} className={`border-2 border-sky-900 hover:bg-sky-800 hover:bg-opacity-70 hover:scale-110 transition-all grid place-items-center gap-2 h-full p-4 text-center rounded-xl leading-5 min-h-[150px] ${className}`} {...rest}>
 				{children}
 		</Link>
 	)
