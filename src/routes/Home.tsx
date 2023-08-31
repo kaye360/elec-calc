@@ -68,7 +68,7 @@ interface Feature {
 
 function Feature({href, className='', children, ...rest} : Feature) {
 	return(
-		<Link to={href} className={`hover:bg-sky-100 hover:bg-opacity-70 hover:scale-110 transition-all grid place-items-center gap-2 h-full p-2 text-center rounded-xl leading-4 ${className}`} {...rest}>
+		<Link to={href} className={`border border-sky-200 hover:bg-sky-100 hover:bg-opacity-70 hover:scale-110 transition-all grid place-items-center gap-2 h-full p-4 text-center rounded-xl leading-4 ${className}`} {...rest}>
 				{children}
 		</Link>
 	)

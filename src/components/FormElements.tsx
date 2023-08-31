@@ -1,8 +1,9 @@
 
+import { motion } from 'framer-motion'
 import React, { MouseEventHandler, ReactNode } from 'react'
 
 
-export const formElementClassName = "mb-4 px-2 py-4 text-xl rounded-xl w-full border border-slate-400"
+export const formElementClassName = "mb-4 px-2 py-4 text-xl rounded-xl w-full border border-sky-400 bg-white"
 
 
 
@@ -17,16 +18,20 @@ export function FormGrid({children} : {children : ReactNode}) {
 
 export function FormResults({children} : {children : ReactNode}) {
     return (
-        <div className="sticky bottom-0 col-span-2 bg-slate-800 text-slate-100 rounded p-4 text-lg">
-            <span className="block font-bold">Results</span>
+        <motion.div 
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="sticky bottom-0 col-span-2 bg-sky-950 text-slate-100 rounded p-4 text-lg"
+        >
+            <span className="block mb-2 font-bold border-b border-sky-900">Results:</span>
             {children}
-        </div>
+        </motion.div>
     )
 }
 
 
 export function Input({...rest}) {
-    return <input step={1} className={formElementClassName} {...rest} />
+    return <input className={formElementClassName} {...rest} />
 }
 
 
@@ -42,7 +47,7 @@ export function Select({children, ...rest}) {
 
 export function ResetButton({handleReset} : {handleReset : MouseEventHandler<HTMLButtonElement>}) {
     return (
-        <button onClick={handleReset} className="border border-slate-400 hover:border-slate-600 py-2 rounded-lg col-span-2">
+        <button onClick={handleReset} className={`${formElementClassName} bg-transparent hover:border-sky-600 col-span-2`} >
             Reset
         </button>
     )
