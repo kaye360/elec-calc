@@ -6,6 +6,7 @@
 	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 	<title>ElecCalc - Electrical Calculator</title>
+	<link rel="manifest" href="/manifest.webmanifest" />
 </head>
 
 <body class="bg-sky-50">
@@ -76,6 +77,20 @@
 		mainContent.style.marginTop = '100vh'
 		setTimeout( () => mainContent.style.marginTop = '30vh', 1000 )
 	</script>
+
+		<script>
+			if ('serviceWorker' in navigator) {
+			// Register a service worker hosted at the root of the
+			// site using the default scope.
+			navigator.serviceWorker.register('/service-worker.js').then(function(registration) {
+				console.log('Service worker registration succeeded:', registration);
+			}, /*catch*/ function(error) {
+				console.log('Service worker registration failed:', error);
+			});
+			} else {
+			console.log('Service workers are not supported.');
+			}
+		</script>
 </body>
 
 </html>
