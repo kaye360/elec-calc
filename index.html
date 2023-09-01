@@ -11,13 +11,14 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Kanit&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Work+Sans&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 
-<body class="bg-gradient-to-br from-[hsl(204,80%,10%)] to-sky-800 text-sky-200 font-['work_sans',helvetical,arial,system-ui,sans-serif] tracking-wider text-lg">
+<body class="bg-gradient-to-br from-[hsl(204,80%,5%)] to-[hsl(204,80%,10%)] text-sky-200 tracking-wider text-lg">
 
 	<div id="root"></div>
 
-	<main id="content" class="relative grid gap-6 max-w-lg mx-auto border border-sky-200 p-6 rounded-xl">
+	<main id="content" class="relative grid gap-6 max-w-lg mx-auto border border-sky-200 p-6 rounded-xl font-copy">
 
 		<h1 class="text-3xl bg-sky-950 text-sky-100 px-4 py-8 rounded-xl">
 			Introducing ElecCalc - Your Ultimate Electrical Calculator App
@@ -78,8 +79,8 @@
 
 	<script>
 		const mainContent = document.querySelector('#content')
-		mainContent.style.marginTop = '100vh'
-		setTimeout( () => mainContent.style.marginTop = '30vh', 1000 )
+		mainContent.style.opacity = '0'
+		setTimeout( () => mainContent.style.opacity = '100', 1000 )
 	</script>
 
 	<script>

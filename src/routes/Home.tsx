@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import Main from "../components/Main"
 
 export default function Home() {
@@ -7,7 +7,7 @@ export default function Home() {
 	return (
 		<Main>
 
-			<div className="grid grid-cols-[repeat(auto-fit,minmax(125px,1fr))] gap-4 mt-6 font-semibold text-slate-700">
+			<div className="grid grid-cols-[repeat(auto-fit,minmax(125px,1fr))] gap-4 font-semibold text-slate-700">
 
 				<Feature href="/metric-imperial-converter" className="text-rose-300">
 					<MetricToImperialConverterIcon />
@@ -62,8 +62,20 @@ interface Feature {
 }
 
 function Feature({href, className='', children, ...rest} : Feature) {
+
+	const navigate = useNavigate()
+
+	function delayLink(e : React.MouseEvent<HTMLAnchorElement, MouseEvent>) : void {
+		e.preventDefault()
+		setTimeout(() => navigate(href), 100 )
+	}
+
 	return(
-		<Link to={href} className={`border-2 border-sky-900 hover:bg-sky-800 hover:bg-opacity-70 hover:scale-110 transition-all grid place-items-center gap-2 h-full p-4 text-center rounded-xl leading-5 min-h-[150px] ${className}`} {...rest}>
+		<Link 
+			to={href}
+			onClick={ (e) => delayLink(e) }
+			className={`border-2 border-sky-950 hover:bg-sky-950 hover:scale-110 active:bg-sky-800 transition-all grid place-items-center gap-2 h-full p-4 text-center rounded-xl leading-5 min-h-[150px] ${className}`} {...rest}
+		>
 				{children}
 		</Link>
 	)
