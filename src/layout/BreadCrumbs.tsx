@@ -44,7 +44,7 @@ export default function BreadCrumbs() {
 
 function BreadCrumbLink({to, children} : {to: string, children: ReactNode}) {
     return (
-        <Link to={to} state={{backlink : true}} className='px-3 py-1 border-2 border-sky-900 hover:bg-sky-800 active:bg-sky-300 rounded-lg'>
+        <Link to={to} state={{backlink : true}} className='px-3 py-1 border-2 border-sky-200 dark:border-sky-900 hover:bg-sky-300 dark:hover:bg-sky-800 active:bg-sky-500 dark:active:bg-sky-300 rounded-lg'>
             {children}
         </Link>
     )

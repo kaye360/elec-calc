@@ -3,7 +3,7 @@ import { motion } from 'framer-motion'
 import React, { MouseEventHandler, ReactNode } from 'react'
 
 
-export const formElementClassName = "mb-4 px-2 py-4 text-xl rounded-xl w-full border border-sky-800 bg-sky-950 text-sky-100"
+export const formElementClassName = "mb-4 px-2 py-4 text-xl rounded-xl w-full border border-sky-300 dark:border-sky-800 bg-sky-50 dark:bg-sky-950 text-sky-950 dark:text-sky-100"
 
 
 
@@ -21,7 +21,7 @@ export function FormResults({children} : {children : ReactNode}) {
         <motion.div 
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            className="sticky bottom-0 col-span-2 bg-sky-950 text-slate-100 rounded p-4 text-lg"
+            className="sticky bottom-0 col-span-2 bg-sky-200 dark:bg-sky-950 text-sky-950 dark:text-sky-100 rounded p-4 text-lg"
         >
             <span className="block mb-2 font-bold border-b border-sky-900">Results:</span>
             {children}
@@ -47,7 +47,7 @@ export function Select({children, ...rest}) {
 
 export function ResetButton({handleReset} : {handleReset : MouseEventHandler<HTMLButtonElement>}) {
     return (
-        <button onClick={handleReset} className={`${formElementClassName} bg-transparent hover:border-sky-600 col-span-2`} >
+        <button onClick={handleReset} className={`${formElementClassName} bg-transparent text-sky-900 dark:text-sky-200 dark:hover:border-sky-600 col-span-2`} >
             Reset
         </button>
     )

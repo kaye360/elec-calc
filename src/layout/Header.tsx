@@ -11,7 +11,7 @@ export default function Header() {
 			initial={{ opacity: 0, y: -100 }}
 			animate={{ opacity: 1, y: 0 }}
 		>  
-			<Link to="/" className="flex items-center gap-1 text-sky-100 text-xl font-semibold font-theme tracking-wider hover:underline">
+			<Link to="/" className="flex items-center gap-1 text-sky-900 dark:text-sky-100 text-xl font-semibold font-theme tracking-wider hover:underline">
 				<Logo />
 				SparkPal
 			</Link>

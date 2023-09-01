@@ -7,43 +7,43 @@ export default function Home() {
 	return (
 		<Main>
 
-			<div className="grid grid-cols-[repeat(auto-fit,minmax(125px,1fr))] gap-4 font-semibold text-slate-700">
+			<div className="grid grid-cols-[repeat(auto-fit,minmax(125px,1fr))] gap-4 font-semibold">
 
-				<Feature href="/metric-imperial-converter" className="text-rose-300">
+				<Feature href="/metric-imperial-converter" className="text-rose-500 dark:text-rose-300">
 					<MetricToImperialConverterIcon />
 					Metric to Imperial Conversion
 				</Feature>
 
-				<Feature href="/wire" className="text-slate-300">	
+				<Feature href="/wire" className="text-slate-500 dark:text-slate-300">	
 					<WireIcon />
 					Wire
 				</Feature>
 
-				<Feature href="/conduit" className="text-sky-300">
+				<Feature href="/conduit" className="text-sky-500 dark:text-sky-300">
 					<ConduitIcon />
 					Conduit
 				</Feature>
 
-				<Feature href="/boxes" className="text-emerald-300">
+				<Feature href="/boxes" className="text-emerald-500 dark:text-emerald-300">
 					<BoxIcon />
 					Boxes
 				</Feature>
 
-				<Feature href="receptacles" className="text-fuchsia-300">
+				<Feature href="receptacles" className="text-fuchsia-500 dark:text-fuchsia-300">
 					<ReceptacleIcon />
 					Receptacles
 				</Feature>
 
-				<Feature href="/residential-checklist" className="text-amber-300">
+				<Feature href="/residential-checklist" className="text-amber-500 dark:text-amber-300">
 					<ResidentialChecklistIcon />
 					Residential Checklist
 				</Feature>
 				
-				<Feature href="/motors" className="text-sky-200">
+				<Feature href="/motors" className="text-sky-500 dark:text-sky-200">
 					Motors
 				</Feature>
 
-				<Feature href="/transformers" className=" text-sky-200">
+				<Feature href="/transformers" className=" text-sky-500 dark:text-sky-200">
 					Transformers
 				</Feature>
 
@@ -74,7 +74,7 @@ function Feature({href, className='', children, ...rest} : Feature) {
 		<Link 
 			to={href}
 			onClick={ (e) => delayLink(e) }
-			className={`border-2 border-sky-950 hover:bg-sky-950 hover:scale-110 active:bg-sky-800 transition-all grid place-items-center gap-2 h-full p-4 text-center rounded-xl leading-5 min-h-[150px] ${className}`} {...rest}
+			className={`border-2 border-sky-200 dark:border-sky-950 hover:bg-sky-200 dark:hover:bg-sky-950 hover:scale-110 active:bg-sky-300 dark:active:bg-sky-800 transition-all grid place-items-center gap-2 h-full p-4 text-center rounded-xl leading-5 min-h-[150px] ${className}`} {...rest}
 		>
 				{children}
 		</Link>
