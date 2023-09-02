@@ -21,7 +21,7 @@ export function FormResults({children} : {children : ReactNode}) {
         <motion.div 
             initial={{ opacity: 0, y: 25 }}
             animate={{ opacity: 1, y: 0 }}
-            className="sticky bottom-0 col-span-2 bg-sky-200 dark:bg-sky-950 text-sky-950 dark:text-sky-100 rounded p-4 text-lg"
+            className="sticky bottom-0 col-span-2 bg-sky-200 dark:bg-slate-950 dark:bg-opacity980 text-sky-950 dark:text-sky-100 rounded p-4 text-lg"
         >
             <span className="block mb-2 font-bold border-b border-sky-900">Results:</span>
             {children}

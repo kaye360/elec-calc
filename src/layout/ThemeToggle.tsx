@@ -8,7 +8,7 @@ export default function ThemeToggle() {
 
     return (
         <button 
-            className='relative flex items-center gap-6 bg-sky-200 dark:bg-sky-950 text-sky-950 dark:text-sky-50 px-3 py-2 rounded-full border border-transparent hover:border-sky-300 dark:hover:border-sky-800 active:bg-sky-300 dark:active:bg-sky-800'
+            className='relative flex items-center gap-6 bg-sky-100 dark:bg-sky-950 text-sky-600 dark:text-sky-400 px-3 py-2 rounded-full border border-transparent hover:border-sky-300 dark:hover:border-sky-800 active:bg-sky-300 dark:active:bg-sky-800'
             onClick={handleClick}
         >
             <SelectedModeIcon theme={theme} />
@@ -48,7 +48,7 @@ function SelectedModeIcon({theme} : {theme : Theme}) {
             absolute top-0 bottom-0 w-1/2 inline-block rounded-full 
             ${theme === 'dark' ? 'left-0' : ''} 
             ${theme === 'light' ? 'left-1/2' : ''}
-            bg-sky-300 dark:bg-sky-800 transition-all duration-200
+            bg-sky-200 dark:bg-sky-900 transition-all duration-200
         `} />
     )
 }

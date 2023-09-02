@@ -11,6 +11,7 @@ export default function Main({children} : { children : ReactNode}) {
 		<motion.div
 			initial={{ opacity: 0, x: isBackLink ? -100 : 100 }}
 			animate={{ opacity: 1, x: 0 }}
+            className='pt-2'
 		>
             {children}
         </motion.div>

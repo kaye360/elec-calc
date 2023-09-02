@@ -1,4 +1,3 @@
-'use client'
 import React from "react";
 import PageHeading from "../../components/PageHeading";
 import SubCategoryButton from "../../components/SubCategoryButton";

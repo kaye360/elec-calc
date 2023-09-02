@@ -34,6 +34,7 @@ interface Pages {
 const pages: Pages = import.meta.glob("./routes/**/*.tsx", { eager: true })
 
 const routes: Route[] = [];
+
 for (const path of Object.keys(pages)) {
 
     if(!pages[path].default) continue
@@ -58,10 +59,8 @@ const routerRoutes = routes.map(({ Element, ...rest }) => ({
     element: <ErrorBoundary fallback={<ErrorPage />}><Element /></ErrorBoundary>
 }))
 
-export const router = createBrowserRouter([
-    {
-        path : '/',
-        element : <Layout />,
-        children : [...routerRoutes, { path : '*', element : <ErrorPage /> }]
-    }
-])
+export const router = createBrowserRouter([{
+    path : '/',
+    element : <Layout />,
+    children : [...routerRoutes, { path : '*', element : <ErrorPage /> }]
+}])
