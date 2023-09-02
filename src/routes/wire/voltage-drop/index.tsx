@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import { FormGrid, ResetButton, Select, FormResults, Input } from "../../../components/FormElements"
-import Main from "../../../components/Main"
 import PageHeading from "../../../components/PageHeading"
+import Main from "../../../layout/Main"
 
 export default function VoltageDrop() {
 

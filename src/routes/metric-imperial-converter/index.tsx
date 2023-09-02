@@ -1,7 +1,7 @@
 'use client'
 
 import React, { SyntheticEvent, useState } from "react";
-import Main from "../../components/Main";
+import Main from "../../layout/Main";
 import PageHeading from "../../components/PageHeading";
 import { FormGrid, ResetButton, Input } from '../../components/FormElements'
 

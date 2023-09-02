@@ -1,6 +1,6 @@
 import React, { ReactNode } from "react"
 import { Link, useNavigate } from "react-router-dom"
-import Main from "../components/Main"
+import Main from "../layout/Main"
 
 export default function Home() {
 
@@ -34,7 +34,7 @@ export default function Home() {
 					Receptacles
 				</Feature>
 
-				<Feature href="/residential-checklist" className="text-amber-500 dark:text-amber-300">
+				<Feature href="/residential" className="text-amber-500 dark:text-amber-300">
 					<ResidentialIcon />
 					Residential
 				</Feature>

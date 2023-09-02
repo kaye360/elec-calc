@@ -1,9 +1,9 @@
 'use client'
 import React from "react";
-import Main from "../../components/Main";
 import PageHeading from "../../components/PageHeading";
 import SubCategoryButton from "../../components/SubCategoryButton";
 import SubCategoryList from "../../components/SubCategoryList";
+import Main from "../../layout/Main";
 
 
 export default function Wire() {

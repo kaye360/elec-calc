@@ -79,7 +79,7 @@ export function WireSizeResults({
             <div className="font-semibold text-xl col-span-2">Results for {wireSize}</div>
 
             { (wireSize === '14awg' || wireSize === '12awg' || wireSize === '10awg') &&
-                <div className="col-span-2 border border-sky-300 rounded-xl px-4  py-2 text-sky-800">
+                <div className="col-span-2 border border-sky-300 dark:border-sky-900 rounded-xl px-4  py-2 text-sky-800 dark:text-sky-200">
                     <span className="font-bold">
                         Note: 
                     </span>
@@ -119,7 +119,7 @@ export function AmpsResults({
     minWireSizeResults : MinWireSizeResults
 }) {
     return (
-        <div className="grid gap-4 col-span-2">
+        <div className="grid gap-6 col-span-2">
             <div className="font-semibold text-xl">Results for {amps} amps</div>
 
             <ResultTable 
@@ -155,10 +155,10 @@ export function ResultTable({
     if( results === undefined ) return <></>
 
     return (
-        <table className="rounded-lg border border-sky-200 col-span-2">
-            <thead className="bg-sky-100 text-lg border-b border-sky-200 font-semibold">
+        <table className="rounded-xl border-1 border-sky-300 dark:border-sky-800 col-span-2 border-collapse">
+            <thead className="bg-sky-200 dark:bg-sky-950 text-lg border-b border-sky-200 dark:border-sky-950 font-semibold rounded-4xl overflow-hidden">
                 <tr>
-                    <td colSpan={3} className="p-4">
+                    <td colSpan={3} className="p-4 bg-sky-300 dark:bg-sky-900">
                         {tableTitle}
                     </td>
                 </tr>

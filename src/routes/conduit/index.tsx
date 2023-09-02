@@ -1,5 +1,5 @@
 import React from "react";
-import Main from "../../components/Main";
+import Main from "../../layout/Main";
 import PageHeading from "../../components/PageHeading";
 import SubCategoryButton from "../../components/SubCategoryButton";
 import SubCategoryList from "../../components/SubCategoryList";
