@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { FormGrid, ResetButton, Select, FormResults, Input } from "../../../components/FormElements"
 import PageHeading from "../../../components/PageHeading"
 import Main from "../../../layout/Main"
+import { wireMaterials } from "../../../data/wire"
 
 export default function VoltageDrop() {
 
@@ -73,8 +74,8 @@ export default function VoltageDrop() {
                 <div>
                     <label htmlFor="wireType">Wire Type</label>
                     <Select id="wireType" name="wireType" defaultValue="4110" onChange={handleChange}>
-                        <option value="12.9">Copper</option>
-                        <option value="21.2">Aluminum</option>
+                        <option value={wireMaterials.copper.resistance}>Copper</option>
+                        <option value={wireMaterials.aluminum.resistance}>Aluminum</option>
                     </Select>
                 </div>
 

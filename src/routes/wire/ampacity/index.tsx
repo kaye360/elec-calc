@@ -3,8 +3,8 @@ import Main from "../../../layout/Main"
 import PageHeading from "../../../components/PageHeading"
 import { FormGrid } from '../../../components/FormElements'
 import { WireSize, wireChart } from "../../../data/wire"
-import { calcMinWireSizeFromAmps } from "./utils"
-import { SelectCalcFrom, SelectWireSize, EnterAmps, WireSizeResults, AmpsResults } from "./components"
+import { calcMinWireSizeFromAmps } from "./_utils"
+import { SelectCalcFrom, SelectWireSize, EnterAmps, WireSizeResults, AmpsResults } from "./_components"
 
 export default function Ampacity() {
 
@@ -64,7 +64,6 @@ function useAmpacity() {
         if( !calcFromValidValues.includes(e.target.value) ) return
         setCalcFrom(e.target.value as CalcFrom)
         if(e.target.value === 'initial') {
-            // setWireType('initial')
             setWireSize('initial')
             setAmps(0)
         }
@@ -75,7 +74,7 @@ function useAmpacity() {
     /**
      * Step 2a: Select wire size
      */
-    const [wireSize, setWireSize] = useState<WireSize>('initial')
+    const [wireSize, setWireSize] = useState<WireSize | 'initial'>('initial')
     const wireSizeValidValues     = ['initial', '14awg', '12awg', '10awg', '8awg', '6awg', '4awg', 
                                      '3awg', '2awg', '1awg', '1/0', '2/0', '3/0', '4/0', '250kcmil', 
                                      '300kcmil', '350kcmil', '400kcmil', '500kcmil', '600kcmil', '700kcmil'
@@ -124,7 +123,6 @@ function useAmpacity() {
 
     return {
         calcFrom, handleSelectCalcFrom,
-        // wireType, handleSelectWireType, isWireTypeReady,
         wireSize, handleSelectWireSize, isWireSizeReady,
         amps, handleEnterAmps, isAmpsReady,
         currentWire, isWireSizeResultsReady,

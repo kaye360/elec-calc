@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react"
 import { Input, Select } from "../../../components/FormElements"
-import { wireChart, Wire, WireSize, WireType } from "../../../data/wire"
-import { MinWireSizeResults, MinWireTable } from "./utils"
+import { wireChart, Wire } from "../../../data/wire"
+import { MinWireSizeResults, MinWireTable } from "./_utils"
 
 
 export function SelectCalcFrom({handleSelectCalcFrom}) {
@@ -15,22 +15,6 @@ export function SelectCalcFrom({handleSelectCalcFrom}) {
                 <option value="ampacity">Ampacity</option>
                 <option value="wireSize">Wire Size</option>
             </Select>
-        </>
-    )
-}
-
-
-export function CalcWireType({handleSelectWireType}) {
-    return (
-        <>
-            <span className="text-lg font-semibold">
-                Wire Type:
-            </span>
-            <Select onChange={handleSelectWireType}>
-                <option value="initial">---</option>
-                <option value="cu">Copper</option>
-                <option value="al">Aluminum</option>
-            </Select>   
         </>
     )
 }

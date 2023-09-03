@@ -1,4 +1,10 @@
 
+export type WireSize = '14awg' | '12awg' | '10awg' | '8awg' | '6awg' | '4awg' | '3awg' | '2awg' | '1awg' | '1/0' | '2/0' | '3/0' | '4/0' | '250kcmil' | '300kcmil' | '350kcmil' | '400kcmil' | '500kcmil'
+
+
+export type WireType = 'rw90xlpe1000' | 'rw90xlpe600' | 'rwu90xlpe1000' | 't90'
+
+
 export interface Wire {
     size : WireSize
     60 : number | 'N/A', 
@@ -6,9 +12,6 @@ export interface Wire {
     90 : number | 'N/A'
 }
 
-export type WireSize = '14awg' | '12awg' | '10awg' | '8awg' | '6awg' | '4awg' | '3awg' | '2awg' | '1awg' | '1/0' | '2/0' | '3/0' | '4/0' | '250kcmil' | '300kcmil' | '350kcmil' | '400kcmil' | '500kcmil' | '600kcmil' | '700kcmil' | 'initial'
-
-export type WireType = 'cu' | 'al' | 'initial'
 
 export interface WireChart {
     table1 : Wire[],
@@ -16,6 +19,21 @@ export interface WireChart {
     table3 : Wire[],
     table4 : Wire[],
 }
+
+
+export const wireMaterials = {
+    copper : {
+        abbr : 'cu',
+        resistance : 12.9
+    },
+    aluminum : {
+        abbr : 'al',
+        resistance : 21.2
+    }
+}
+
+
+export const wireSizes : WireSize[] = ['14awg','12awg','10awg','8awg','6awg','4awg','3awg','2awg','1awg','1/0','2/0','3/0','4/0','250kcmil','300kcmil','350kcmil','400kcmil','500kcmil']
 
 
 export const wireChart : WireChart = {

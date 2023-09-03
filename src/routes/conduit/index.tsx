@@ -10,7 +10,8 @@ export default function Conduit() {
             <PageHeading>Conduit</PageHeading>
 
             <SubCategoryList>
-                <SubCategoryButton href="/conduit/fill">Fill</SubCategoryButton>
+                <SubCategoryButton href="/conduit/fill-reference">Fill Reference</SubCategoryButton>
+                <SubCategoryButton href="/conduit/fill-calculator">Fill Calculator</SubCategoryButton>
                 <SubCategoryButton href="/conduit/bend-calculations">Bend Calculations</SubCategoryButton>
             </SubCategoryList>
         </Main>

@@ -10,6 +10,10 @@ import Layout from './layout/Layout'
  * Repurposed file-base routing system base on this article:
  * https://dev.to/franciscomendes10866/file-based-routing-using-vite-and-react-router-3fdo
  * 
+ * Set the routes directory in the files const and filename regex
+ * Any file starting with _ will be ignored
+ * Any file without a default export will be ignored
+ * 
  */
 
 
@@ -24,20 +28,20 @@ interface Route extends BaseRoute {
     Element: React.ComponentType<any>;
 }
 
-interface Pages {
+interface Files {
     [key: string]: {
         default: React.ComponentType<any>;
     } & BaseRoute
 }
 
 // @ts-ignore
-const pages: Pages = import.meta.glob("./routes/**/*.tsx", { eager: true })
+const files: Files = import.meta.glob(["./routes/**/*.tsx", '!./routes/**/_*.tsx'], { eager: true })
 
 const routes: Route[] = [];
 
-for (const path of Object.keys(pages)) {
+for (const path of Object.keys(files)) {
 
-    if(!pages[path].default) continue
+    if(!files[path].default) continue
 
     const fileName = path.match(/\.\/routes\/(.*)\.tsx$/)?.[1]
     if (!fileName) continue
@@ -48,9 +52,9 @@ for (const path of Object.keys(pages)) {
 
     routes.push({
         path: fileName === "index" ? "/" : `/${normalizedPathName.toLowerCase()}`,
-        Element: pages[path].default,
-        loader: pages[path]?.loader as LoaderFunction | undefined,
-        action: pages[path]?.action as ActionFunction | undefined,
+        Element: files[path].default,
+        loader: files[path]?.loader as LoaderFunction | undefined,
+        action: files[path]?.action as ActionFunction | undefined,
     })
 }
 
