@@ -1,25 +1,12 @@
 import { WireAmpacity, wireAmpacityTable } from "../../../data/wireAmpacity"
+import { AmpacityResults } from "./_components"
 
 
-interface MinWire {
-    size       : string,
-    hasMatched : boolean
+type Results = {
+    [key in 'table1' | 'table2' | 'table3' | 'table4']: AmpacityResults
 }
 
-export interface MinWireTable {
-    60 : MinWire,
-    75 : MinWire,
-    90 : MinWire
-}
-
-export interface MinWireSizeResults {
-    table1 : MinWireTable,
-    table2 : MinWireTable,
-    table3 : MinWireTable,
-    table4 : MinWireTable
-}
-
-export function calcMinWireSizeFromAmps({amps} : {amps : number}) : MinWireSizeResults {
+export function calcMinWireSizeFromAmps({amps} : {amps : number}) : Results {
 
     /**
      * Create a container to store min wire sizes
@@ -59,16 +46,16 @@ export function calcMinWireSizeFromAmps({amps} : {amps : number}) : MinWireSizeR
      * Extract results into new object
      */
 
-    const minWireSizeResults = {}
+    const results = <Results>{}
 
     Object.entries(minWireSizeResultsContainer).forEach( (table : any) => {
         const [key, value] = table
-        minWireSizeResults[key] = {
+        results[key] = {
             60: value[60].size,
             75: value[75].size,
             90: value[90].size,
         }
     })
 
-    return minWireSizeResults as MinWireSizeResults
+    return results 
 }

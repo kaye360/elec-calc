@@ -1,7 +1,6 @@
 import React, { ReactNode } from "react"
 import { Input, Select } from "../../../components/FormElements"
-import { MinWireSizeResults, MinWireTable } from "./_utils"
-import { WireAmpacity, wireAmpacityTable } from "../../../data/wireAmpacity"
+import { wireAmpacityTable } from "../../../data/wireAmpacity"
 
 
 export function SelectCalcFrom({handleSelectCalcFrom}) {
@@ -55,7 +54,7 @@ export function EnterAmps({handleEnterAmps}) {
 export function WireSizeResults({
     currentWire, wireSize
 } : {
-    currentWire : {[key : string] : WireAmpacity | undefined},
+    currentWire : {[key : string] : AmpacityResults},
     wireSize : string
 }) {
 
@@ -100,29 +99,29 @@ export function WireSizeResults({
 
 
 export function AmpsResults({
-    amps, minWireSizeResults
+    amps, results
 } : {
     amps : number, 
-    minWireSizeResults : MinWireSizeResults
+    results : {[key: string] : AmpacityResults}
 }) {
     return (
         <div className="grid gap-6 col-span-2">
             <div className="font-semibold text-xl">Results for {amps} amps</div>
 
             <ResultTable 
-                results={minWireSizeResults.table1} 
+                results={results.table1} 
                 tableTitle="Table 1 - Single Copper Conductors, Free Air"
             />
             <ResultTable 
-                results={minWireSizeResults.table2} 
+                results={results.table2} 
                 tableTitle="Table 2 - 1-3 Copper Conductors in Raceway or Cable"
             />
             <ResultTable 
-                results={minWireSizeResults.table3} 
+                results={results.table3} 
                 tableTitle="Table 3 - Single Aluminum Conducors, Free Air"
             />
             <ResultTable 
-                results={minWireSizeResults.table4} 
+                results={results.table4} 
                 tableTitle="Table 4 - 1-3 Aluminum Conductors in a Raceway or Cable"
             />
         </div>
@@ -131,11 +130,17 @@ export function AmpsResults({
 
 
 
+export interface AmpacityResults {
+    60 : string,
+    75 : string,
+    90 : string
+}
+
 
 export function ResultTable({
     results, tableTitle
 } : {
-    results : MinWireTable | WireAmpacity | undefined
+    results : AmpacityResults
     tableTitle : string
 }) {
 

@@ -92,7 +92,7 @@ export default function VoltageDrop() {
 
 
 
-interface Calc {
+interface VoltageDropCalc {
     voltage  : number,
     phase    : 1 | 3,
     amps     : number,
@@ -107,7 +107,7 @@ interface Calc {
 function useVoltageDropCalc() {
 
 
-    const initialCalc : Calc = {
+    const initialVoltageDropCalc : VoltageDropCalc = {
         voltage  : 120,
         phase    : 1,
         amps     : 15,
@@ -116,7 +116,7 @@ function useVoltageDropCalc() {
         distance : 100
     }
 
-    const [calc, setCalc] = useState<Calc>(initialCalc)
+    const [calc, setCalc] = useState<VoltageDropCalc>(initialVoltageDropCalc)
 
     const isValidCalcKey   = (e: React.ChangeEvent<HTMLSelectElement>) => e.target.id in calc
     const isValidCalcValue = (e: React.ChangeEvent<HTMLSelectElement>) => 
@@ -137,7 +137,7 @@ function useVoltageDropCalc() {
 
 
     function handleReset() {
-        setCalc(initialCalc)
+        setCalc(initialVoltageDropCalc)
     }
 
 
@@ -152,7 +152,7 @@ function useVoltageDropCalc() {
 
 
 
-function calcVoltageDrop({phase, wireType, distance, amps, cMils} : Calc ) : number {
+function calcVoltageDrop({phase, wireType, distance, amps, cMils} : VoltageDropCalc ) : number {
 
     let voltageDrop = (
         Number(phase) * 

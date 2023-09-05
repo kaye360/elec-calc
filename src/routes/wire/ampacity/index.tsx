@@ -3,7 +3,7 @@ import Main from "../../../layout/Main"
 import PageHeading from "../../../components/PageHeading"
 import { FormGrid } from '../../../components/FormElements'
 import { calcMinWireSizeFromAmps } from "./_utils"
-import { SelectCalcFrom, SelectWireSize, EnterAmps, WireSizeResults, AmpsResults } from "./_components"
+import { SelectCalcFrom, SelectWireSize, EnterAmps, WireSizeResults, AmpsResults, AmpacityResults } from "./_components"
 import { WireSize, isValidWireSize } from "../../../data/wireSize"
 import { wireAmpacityTable } from "../../../data/wireAmpacity"
 import { isHTMLInputElement, isHTMLSelectElement } from "../../../utils/form"
@@ -43,7 +43,7 @@ export default function Ampacity() {
 
                 {/* Step 3b: Ampacity results */}
                 { isAmpsResultsReady &&
-                    <AmpsResults amps={amps} minWireSizeResults={minWireSizeResults}/>
+                    <AmpsResults amps={amps} results={minWireSizeResults}/>
                 }
             </FormGrid>
         </Main>
@@ -63,7 +63,7 @@ function useAmpacity() {
     const isValidCalcValue = (value: any) => ['ampacity', 'wireSize', 'initial'].includes(value)
 
     function handleSelectCalcFrom(e: SyntheticEvent) {
-        if( !isHTMLSelectElement(e.target) ) return
+        if( !isHTMLSelectElement(e.target)    ) return
         if( !isValidCalcValue(e.target.value) ) return
 
         setCalcFrom(e.target.value as CalcFrom)
@@ -94,10 +94,11 @@ function useAmpacity() {
      */
     const [amps, setAmps] = useState<number>(0)
     const isAmpsReady     = calcFrom === 'ampacity'
+    const isValidAmpsValue = (value : string) : boolean => !isNaN( Number(value) ) || Number(value) >= 0
 
     function handleEnterAmps(e: SyntheticEvent) {
         if( !isHTMLInputElement(e.target) ) return
-        if( isNaN( Number(e.target.value) ) ) return
+        if( !isValidAmpsValue(e.target.value) ) return
         setAmps( Number(e.target.value) )
     }
 
@@ -105,11 +106,11 @@ function useAmpacity() {
     /**
      * Step 3a: Wire size results
      */
-    const currentWire = {
-        table1 : wireAmpacityTable.table1.find( wire => wire.size == wireSize ),
-        table2 : wireAmpacityTable.table2.find( wire => wire.size == wireSize ),
-        table3 : wireAmpacityTable.table3.find( wire => wire.size == wireSize ),
-        table4 : wireAmpacityTable.table4.find( wire => wire.size == wireSize ),
+    const currentWire : {[key:string] : AmpacityResults} = {
+        table1 : wireAmpacityTable.table1.find( wire => wire.size == wireSize ) as AmpacityResults,
+        table2 : wireAmpacityTable.table2.find( wire => wire.size == wireSize ) as AmpacityResults,
+        table3 : wireAmpacityTable.table3.find( wire => wire.size == wireSize ) as AmpacityResults,
+        table4 : wireAmpacityTable.table4.find( wire => wire.size == wireSize ) as AmpacityResults,
     }
     const isWireSizeResultsReady = (calcFrom === 'wireSize') && isValidWireSize(wireSize) && wireSize !== 'initial'
 
