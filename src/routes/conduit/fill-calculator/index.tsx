@@ -3,9 +3,9 @@ import Main from '../../../layout/Main'
 import PageHeading from '../../../components/PageHeading'
 import { FormGrid, Input, Select, SubmitButton } from '../../../components/FormElements'
 import { AddIcon } from '../../../components/Icons'
-import { WireSize, wireSizes } from '../../../data/wire'
 import { ConduitSize, ConduitTypes, conduitCrossSectionalArea, conduitTypes } from '../../../data/conduit'
 import { useAnimate } from 'framer-motion'
+import { WireSize, wireSizes } from '../../../data/wireSize'
 
 
 

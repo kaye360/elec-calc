@@ -2,10 +2,13 @@ import React, { SyntheticEvent, useState } from 'react'
 import Main from '../../../layout/Main'
 import PageHeading from '../../../components/PageHeading'
 import { FormGrid, FormResults, Input, ResetButton, Select } from '../../../components/FormElements'
+import { isHTMLInputElement, isHTMLSelectElement } from '../../../utils/form'
 
 export default function WirePricing() {
 
     const { unit, price, length, result, meters, handleLengthChange, handlePriceChange, handleUnitChange, handleReset } = useWirePricing()
+
+    const resultsAreReady = Number(length) > 0 && unit !== 'initial' && Number(price) > 0
 
     return (
         <Main>
@@ -35,14 +38,14 @@ export default function WirePricing() {
                     <Input type="number" step={0.01} onChange={handlePriceChange} value={price} />
                 </label>
 
-                { Number(length) > 0 && unit !== 'initial' && Number(price) > 0 &&
+                { resultsAreReady &&
                     <FormResults>
                         <p className='font-bold'>
                             <span className='text-2xl'>
                                 Total: ${result.toFixed(2)} <br />
                             </span>
                             <span className='text-sky-400 text-sm'>
-                            {meters.toFixed(2)} meters at ${price} per meter<br />
+                                {meters.toFixed(2)} meters at ${price} per meter<br />
                             </span>
                         </p>
                     </FormResults>
@@ -55,9 +58,14 @@ export default function WirePricing() {
 
 
 function useWirePricing() {
+
+    type Unit = 'feet' | 'meters' | 'initial'
+
     const [length, setLength] = useState<number | ''>(0)
-    const [unit, setsetUnit]  = useState<'feet' | 'meters' | 'initial'>('initial')
+    const [unit, setsetUnit]  = useState<Unit>('initial')
     const [price, setPrice]   = useState<number | ''>(0)
+
+    const isValidUnit = (value : any) : value is Unit => ['initial', 'feet', 'meters'].includes(value)
 
     let result: number = 0
 
@@ -72,18 +80,18 @@ function useWirePricing() {
     const meters = Number(unit === 'meters' ? length : Number(length) / 3.281)
 
     function handleLengthChange(e: SyntheticEvent) {
-        if( !(e.target instanceof HTMLInputElement) ) return
+        if( !isHTMLInputElement(e.target) ) return
         setLength( e.target.value === '' ? e.target.value : Number(e.target.value) )
     }
 
     function handleUnitChange(e: SyntheticEvent) {
-        if( !(e.target instanceof HTMLSelectElement) ) return
-        if( e.target.value !== 'initial' && e.target.value !== 'feet' && e.target.value !== 'meters' ) return
+        if( !isHTMLSelectElement(e.target) ) return
+        if( !isValidUnit(e.target.value) ) return
         setsetUnit(e.target.value)
     }
 
     function handlePriceChange(e: SyntheticEvent) {
-        if( !(e.target instanceof HTMLInputElement) ) return
+        if( !isHTMLInputElement(e.target) ) return
         setPrice( Number(e.target.value) )
     }
 

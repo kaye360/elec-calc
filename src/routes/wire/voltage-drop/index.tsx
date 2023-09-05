@@ -2,7 +2,9 @@ import React, { useState } from "react"
 import { FormGrid, ResetButton, Select, FormResults, Input } from "../../../components/FormElements"
 import PageHeading from "../../../components/PageHeading"
 import Main from "../../../layout/Main"
-import { wireMaterials } from "../../../data/wire"
+import { wireMaterials } from "../../../data/wireMaterials"
+import { wireCmils } from "../../../data/wireCmils"
+import { isHTMLInputElement, isHTMLSelectElement } from "../../../utils/form"
 
 export default function VoltageDrop() {
 
@@ -19,12 +21,24 @@ export default function VoltageDrop() {
 
                 <div>
                     <label htmlFor="voltage">Voltage</label>
-                    <Input id="voltage" name="voltage" value={calc.voltage} onChange={handleChange}  />
+                    <Input 
+                        type="number" 
+                        id="voltage" 
+                        name="voltage" 
+                        value={calc.voltage} 
+                        onChange={handleChange}  
+                    />
                 </div>
 
                 <div>
                     <label htmlFor="amps">Amps</label>
-                    <Input id="amps" name="amps" value={calc.amps} onChange={handleChange}  />
+                    <Input 
+                        type="number"
+                        id="amps" 
+                        name="amps" 
+                        value={calc.amps} 
+                        onChange={handleChange}  
+                    />
                 </div>
 
                 <div>
@@ -37,37 +51,10 @@ export default function VoltageDrop() {
 
                 <div>
                     <label htmlFor="wireSize">Wire Size</label>
-                    <Select id="wireSize" name="wireSize" defaultValue="4110" onChange={handleChange}>
-                        <option value="1620">18 AWG</option>
-                        <option value="2580">16 AWG</option>
-                        <option value="4110">14 AWG</option>
-                        <option value="6530">12 AWG</option>
-                        <option value="10380">10 AWG</option>
-                        <option value="16510">8 AWG</option>
-                        <option value="26240">6 AWG</option>
-                        <option value="41740">4 AWG</option>
-                        <option value="52620">3 AWG</option>
-                        <option value="66360">2 AWG</option>
-                        <option value="83690">1 AWG</option>
-                        <option value="105600">1/0 AWG</option>
-                        <option value="133100">2/0 AWG</option>
-                        <option value="167800">3/0 AWG</option>
-                        <option value="211600">4/0 AWG</option>
-                        <option value="250000">250 kcmil</option>
-                        <option value="300000">300 kcmil</option>
-                        <option value="350000">350 kcmil</option>
-                        <option value="400000">400 kcmil</option>
-                        <option value="500000">500 kcmil</option>
-                        <option value="600000">600 kcmil</option>
-                        <option value="700000">700 kcmil</option>
-                        <option value="750000">750 kcmil</option>
-                        <option value="800000">800 kcmil</option>
-                        <option value="900000">900 kcmil</option>
-                        <option value="1000000">1000 kcmil</option>
-                        <option value="1250000">1250 kcmil</option>
-                        <option value="1500000">1500 kcmil</option>
-                        <option value="1750000">1750 kcmil</option>
-                        <option value="2000000">2000 kcmil</option>
+                    <Select id="cMils" name="cMils" defaultValue="4110" onChange={handleChange}>
+                        { Object.entries(wireCmils).map( wire => (
+                            <option value={wire[1]} key={wire[0]}>{wire[0]}</option>
+                        ))}
                     </Select>
                 </div>
 
@@ -81,7 +68,13 @@ export default function VoltageDrop() {
 
                 <div>
                     <label htmlFor="distance">Distance (feet)</label>
-                    <Input id="distance" name="distance" value={calc.distance} onChange={handleChange} />
+                    <Input 
+                        type="number"
+                        id="distance" 
+                        name="distance" 
+                        value={calc.distance} 
+                        onChange={handleChange} 
+                    />
                 </div>
 
                 <FormResults>
@@ -100,10 +93,10 @@ export default function VoltageDrop() {
 
 
 interface Calc {
-    voltage : number,
-    phase : 1 | 3,
-    amps : number,
-    wireSize : number,
+    voltage  : number,
+    phase    : 1 | 3,
+    amps     : number,
+    cMils    : number,
     wireType : 12.9 | 21.2, // Cu: 12.9, Al: 21.2
     distance : number
 }
@@ -115,25 +108,28 @@ function useVoltageDropCalc() {
 
 
     const initialCalc : Calc = {
-        voltage : 120,
-        phase : 1,
-        amps : 15,
-        wireSize : 4110,
+        voltage  : 120,
+        phase    : 1,
+        amps     : 15,
+        cMils    : 4110,
         wireType : 12.9,
         distance : 100
     }
 
     const [calc, setCalc] = useState<Calc>(initialCalc)
 
+    const isValidCalcKey   = (e: React.ChangeEvent<HTMLSelectElement>) => e.target.id in calc
+    const isValidCalcValue = (e: React.ChangeEvent<HTMLSelectElement>) => 
+        !isNaN( Number(e.target.value) ) || e.target.value === ''
 
     function handleChange(e: React.ChangeEvent<HTMLSelectElement>) {
-        if( !(e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) ) return
-        if( !(e.target.id in calc) ) return
-        if( isNaN( Number(e.target.value) ) && e.target.value !== '' ) return
-
-        const currentInputValue = e.target.value === '' ? e.target.value : Number( e.target.value )
+        if( !isHTMLInputElement(e.target) && !isHTMLSelectElement(e.target) ) return
+        if( !isValidCalcKey(e)   ) return
+        if( !isValidCalcValue(e) ) return
+        
+        const currentInputValue       = e.target.value === '' ? e.target.value : Number( e.target.value )
         const currentInputValueNumber = Number(currentInputValue)
-        const currentInputId = e.target.id
+        const currentInputId          = e.target.id
 
         setCalc({ ...calc, [currentInputId] : currentInputValueNumber})
     }
@@ -156,7 +152,7 @@ function useVoltageDropCalc() {
 
 
 
-function calcVoltageDrop({phase, wireType, distance, amps, wireSize} : Calc ) : number {
+function calcVoltageDrop({phase, wireType, distance, amps, cMils} : Calc ) : number {
 
     let voltageDrop = (
         Number(phase) * 
@@ -164,7 +160,7 @@ function calcVoltageDrop({phase, wireType, distance, amps, wireSize} : Calc ) : 
         Number(distance) * 
         Number(amps)
     ) /
-    Number(wireSize)
+    Number(cMils)
 
     return Number(voltageDrop.toFixed(2))
 }

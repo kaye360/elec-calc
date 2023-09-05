@@ -1,8 +1,8 @@
-import { Wire, wireChart } from "../../../data/wire"
+import { WireAmpacity, wireAmpacityTable } from "../../../data/wireAmpacity"
 
 
 interface MinWire {
-    size : string,
+    size       : string,
     hasMatched : boolean
 }
 
@@ -35,16 +35,16 @@ export function calcMinWireSizeFromAmps({amps} : {amps : number}) : MinWireSizeR
     } )
 
     /**
-     * Loop thru wireChart and fill container with min values
+     * Loop thru wireAmpacityTable and fill container with min values
      */
 
     // Loop thru tables 1-4
-    Object.keys(wireChart).forEach( table => {
+    Object.keys(wireAmpacityTable).forEach( table => {
         
-        // Loop thru each wireChart table
-        wireChart[table]?.forEach( (wire : Wire) => {
+        // Loop thru each wireAmpacityTable table
+        wireAmpacityTable[table]?.forEach( (wire : WireAmpacity) => {
             
-            // Loop thru wire temps in each table in wireChart and check for results
+            // Loop thru wire temps in each table in wireAmpacityTable and check for results
             const wireTemps = [60, 75, 90]
             wireTemps.forEach( wireTemp => {
                 if( wire[wireTemp] >= amps && !minWireSizeResultsContainer[table][wireTemp].hasMatched ) {

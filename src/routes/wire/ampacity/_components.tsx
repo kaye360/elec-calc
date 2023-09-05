@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react"
 import { Input, Select } from "../../../components/FormElements"
-import { wireChart, Wire } from "../../../data/wire"
 import { MinWireSizeResults, MinWireTable } from "./_utils"
+import { WireAmpacity, wireAmpacityTable } from "../../../data/wireAmpacity"
 
 
 export function SelectCalcFrom({handleSelectCalcFrom}) {
@@ -29,7 +29,7 @@ export function SelectWireSize({handleSelectWireSize}) {
             </span>
             <Select onChange={handleSelectWireSize}>
                 <option value="initial">---</option>
-                { wireChart.table1.map( wire => (
+                { wireAmpacityTable.table1.map( wire => (
                     <option value={wire.size} key={wire.size}>{wire.size}</option>
                 ) )}
             </Select>
@@ -55,14 +55,17 @@ export function EnterAmps({handleEnterAmps}) {
 export function WireSizeResults({
     currentWire, wireSize
 } : {
-    currentWire : {[key : string] : Wire | undefined},
+    currentWire : {[key : string] : WireAmpacity | undefined},
     wireSize : string
 }) {
+
+    const hasFootNote = wireSize === '14awg' || wireSize === '12awg' || wireSize === '10awg'
+
     return (
         <div className="grid gap-4 col-span-2">
             <div className="font-semibold text-xl col-span-2">Results for {wireSize}</div>
 
-            { (wireSize === '14awg' || wireSize === '12awg' || wireSize === '10awg') &&
+            { hasFootNote &&
                 <div className="col-span-2 border border-sky-300 dark:border-sky-900 rounded-xl px-4  py-2 text-sky-800 dark:text-sky-200">
                     <span className="font-bold">
                         Note: 
@@ -132,7 +135,7 @@ export function AmpsResults({
 export function ResultTable({
     results, tableTitle
 } : {
-    results : MinWireTable | Wire | undefined
+    results : MinWireTable | WireAmpacity | undefined
     tableTitle : string
 }) {
 

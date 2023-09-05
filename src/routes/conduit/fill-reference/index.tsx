@@ -3,8 +3,8 @@ import Main from "../../../layout/Main";
 import PageHeading from "../../../components/PageHeading";
 import { FormGrid, Select } from '../../../components/FormElements'
 import { conduitFillTableTitles, conduitFillTables } from "../../../data/conduit";
-import { WireSize, wireSizes } from "../../../data/wire";
 import { useAnimate } from "framer-motion";
+import { WireSize, wireSizes } from "../../../data/wireSize";
 
 export default function ConduitFillReference() {
 
