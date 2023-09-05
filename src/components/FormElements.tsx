@@ -52,3 +52,13 @@ export function ResetButton({handleReset} : {handleReset : MouseEventHandler<HTM
         </button>
     )
 }
+
+
+
+export function SubmitButton({handleClick, children} : {handleClick : MouseEventHandler<HTMLButtonElement>, children : any}) {
+    return (
+        <button onClick={handleClick} className={`${formElementClassName} flex items-center justify-center gap-2 col-span-2 hover:bg-sky-200 dark:hover:bg-sky-900`}>
+            {children}
+        </button>
+    )
+}

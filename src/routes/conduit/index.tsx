@@ -11,8 +11,9 @@ export default function Conduit() {
 
             <SubCategoryList>
                 <SubCategoryButton href="/conduit/fill-reference">Fill Reference</SubCategoryButton>
-                <SubCategoryButton href="/conduit/fill-calculator">Fill Calculator</SubCategoryButton>
                 <SubCategoryButton href="/conduit/bend-calculations">Bend Calculations</SubCategoryButton>
+                <span>Coming Soon</span>
+                <SubCategoryButton href="/conduit/fill-calculator">Fill Calculator</SubCategoryButton>
             </SubCategoryList>
         </Main>
     )
