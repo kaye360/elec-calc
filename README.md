@@ -3,4 +3,4 @@
 This app provides references and calculators to help electricians on the job.
 More to come...
 
-Made by [Josh Kaye](https://joshkkaye.dev)
+Made by [Josh Kaye](https://joshkaye.dev)
