@@ -8,8 +8,7 @@ export default function Residential() {
         <Main>
             <SubCategoryList>
                 <SubCategoryButton href='/residential/checklist'>Checklist</SubCategoryButton>
-                <SubCategoryButton href='/residential/service-mast'>Service Mast</SubCategoryButton>
-
+                <SubCategoryButton href='/residential/service-mast' comingSoon>Service Mast</SubCategoryButton>
             </SubCategoryList>
         </Main>
     )

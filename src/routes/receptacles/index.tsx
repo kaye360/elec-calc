@@ -7,8 +7,7 @@ export default function index() {
     return (
         <Main>
             <SubCategoryList>
-                <span>Coming Soon</span>
-                <SubCategoryButton href="/receptacles/twist-lock">Twist-Lock Reference</SubCategoryButton>
+                <SubCategoryButton href="/receptacles/twist-lock" comingSoon>Twist-Lock Reference</SubCategoryButton>
             </SubCategoryList>
         </Main>
     )

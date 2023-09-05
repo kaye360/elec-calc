@@ -1,0 +1,7 @@
+{
+    "name": "sparkpal",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+  }

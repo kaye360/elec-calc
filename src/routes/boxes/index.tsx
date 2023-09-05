@@ -13,8 +13,7 @@ export default function Boxes() {
             </PageHeading>
 
             <SubCategoryList>
-                <span>Coming Soon</span>
-                <SubCategoryButton href="/boxes/fill">Box Fill</SubCategoryButton>
+                <SubCategoryButton href="/boxes/fill" comingSoon>Box Fill</SubCategoryButton>
             </SubCategoryList>
         </Main>
     )

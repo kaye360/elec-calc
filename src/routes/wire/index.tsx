@@ -14,8 +14,7 @@ export default function Wire() {
                 <SubCategoryButton href="/wire/voltage-drop">Voltage Drop</SubCategoryButton>
                 <SubCategoryButton href="/wire/ampacity">Ampacity</SubCategoryButton>
                 <SubCategoryButton href="/wire/pricing">Pricing</SubCategoryButton>
-                <span>Coming Soon</span>
-                <SubCategoryButton href="/wire/derating">Derating</SubCategoryButton>
+                <SubCategoryButton href="/wire/derating" comingSoon>Derating</SubCategoryButton>
             </SubCategoryList>
 
         </Main>
