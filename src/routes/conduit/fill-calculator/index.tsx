@@ -3,9 +3,11 @@ import Main from '../../../layout/Main'
 import PageHeading from '../../../components/PageHeading'
 import { FormGrid, Input, Select, SubmitButton } from '../../../components/FormElements'
 import { AddIcon } from '../../../components/Icons'
-import { ConduitSize, ConduitTypes, conduitCrossSectionalArea, conduitTypes } from '../../../data/conduit'
 import { useAnimate } from 'framer-motion'
 import { WireSize, wireSizes } from '../../../data/wireSize'
+import { ConduitType, conduitTypes } from '../../../data/conduitType'
+import { conduitCrossSectionalArea } from '../../../data/conduitCsa'
+import { ConduitSize } from '../../../data/conduitSize'
 
 
 
@@ -58,12 +60,12 @@ export default function ConduitFillCalculator() {
         })
     }
 
-    const [conduitType, setConduitType] = useState<ConduitTypes | 'initial'>('initial')
+    const [conduitType, setConduitType] = useState<ConduitType | 'initial'>('initial')
 
     function handleConduitTypeChange(e: SyntheticEvent) {
         if( !(e.target instanceof HTMLSelectElement) ) return 
         if( ![...conduitTypes,  'initial'].includes(e.target.value) ) return
-        setConduitType(e.target.value as ConduitTypes)
+        setConduitType(e.target.value as ConduitType)
     }
 
 

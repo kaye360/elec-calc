@@ -1,8 +1,0 @@
-{
-    "appId": "io.ionic.sparkpal",
-    "appName": "sparkpal",
-    "bundledWebRuntime": false,
-    "npmClient": "npm",
-    "webDir": "dist",
-    "cordova": {}
-  }

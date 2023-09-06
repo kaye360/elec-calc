@@ -1,28 +1,6 @@
-import { WireSize } from "./wire"
+import { ConduitSize } from "./conduitSize"
+import { WireSize } from "./wireSize"
 
-
-export type ConduitSize = 0.5 | 0.75 | 1 | 1.25 | 1.5 | 2 | 2.5 | 3 
-
-export type ConduitTypes = 'emt' | 'pvc' | 'flex' | 'coreline' | 'liquidtite'
-
-export const conduitTypes : ConduitTypes[] = ['emt', 'pvc', 'flex', 'coreline', 'liquidtite']
-
-export const conduitSizeToType : {[key in ConduitSize] : string} = {
-    0.5  : '1/2',
-    0.75 : '3/4',
-    1    : '1',
-    1.25 : '1 1/4',
-    1.5  : '1 1/2',
-    2    : '2',
-    2.5  : '2 1/2',
-    3    : '3'
-}
-
-export interface Conduit {
-    size : ConduitSize,
-    type : ConduitTypes,
-
-}
 
 type ConduitFillTable = {
     [key in WireSize]: {
@@ -32,17 +10,6 @@ type ConduitFillTable = {
 
 interface ConduitFillTables {
     [key: string] : ConduitFillTable
-}
-
-interface ConduitFillTableTitles {
-    [key:string] : string
-}
-
-export const conduitFillTableTitles: ConduitFillTableTitles = {
-    table6a : 'RW90 (600V)',
-    table6b : 'RW90 (1000V)',
-    table6d : 'RWU90 (1000V), TWU, TWU75 (600V)',
-    table6k : 'T90, TWN75 (600V)'
 }
 
 export const conduitFillTables: ConduitFillTables = {
@@ -129,14 +96,14 @@ export const conduitFillTables: ConduitFillTables = {
 }
 
 
-type ConduitCrossSectionalArea = {
-    [key in ConduitTypes]: { [key in ConduitSize] : number }
+
+interface ConduitFillTableTitles {
+    [key:string] : string
 }
 
-export const conduitCrossSectionalArea : ConduitCrossSectionalArea = {
-    emt :        { 0.5: 75, 0.75: 132, 1: 216, 1.25: 376, 1.5: 515, 2: 853, 2.5: 1513, 3: 2280, },
-    pvc :        { 0.5: 0, 0.75: 0, 1: 30, 1.25: 0, 1.5: 0, 2: 0, 2.5: 0, 3: 0, },
-    flex :       { 0.5: 0, 0.75: 0, 1: 30, 1.25: 0, 1.5: 0, 2: 0, 2.5: 0, 3: 0, },
-    liquidtite : { 0.5: 0, 0.75: 0, 1: 30, 1.25: 0, 1.5: 0, 2: 0, 2.5: 0, 3: 0, },
-    coreline :   { 0.5: 0, 0.75: 0, 1: 30, 1.25: 0, 1.5: 0, 2: 0, 2.5: 0, 3: 0, },
+export const conduitFillTableTitles: ConduitFillTableTitles = {
+    table6a : 'RW90 (600V)',
+    table6b : 'RW90 (1000V)',
+    table6d : 'RWU90 (1000V), TWU, TWU75 (600V)',
+    table6k : 'T90, TWN75 (600V)'
 }

@@ -2,14 +2,15 @@ import React, { SyntheticEvent, useEffect, useState } from "react";
 import Main from "../../../layout/Main";
 import PageHeading from "../../../components/PageHeading";
 import { FormGrid, Select } from '../../../components/FormElements'
-import { conduitFillTableTitles, conduitFillTables } from "../../../data/conduit";
 import { useAnimate } from "framer-motion";
 import { WireSize, wireSizes } from "../../../data/wireSize";
+import { conduitFillTableTitles, conduitFillTables } from "../../../data/conduitFill";
+import { isHTMLSelectElement } from "../../../utils/form";
 
 export default function ConduitFillReference() {
 
     const [wireTable, setWireTable] = useState<string>('')
-    const [wireSize, setWireSize] = useState<WireSize | ''>('')
+    const [wireSize, setWireSize]   = useState<WireSize | ''>('')
 
     let results = wireTable && wireSize ? (
         conduitFillTables[wireTable][wireSize]
@@ -18,7 +19,7 @@ export default function ConduitFillReference() {
     )
 
     function handleChangeWireTable(e: SyntheticEvent) {
-        if (!(e.target instanceof HTMLSelectElement)) return
+        if (!isHTMLSelectElement(e.target)) return
 
         if (e.target.value === 'initial') {
             setWireTable('')
@@ -28,7 +29,7 @@ export default function ConduitFillReference() {
     }
 
     function handleChangeWireSize(e: SyntheticEvent) {
-        if (!(e.target instanceof HTMLSelectElement)) return
+        if (!isHTMLSelectElement(e.target)) return
 
         if (e.target.value === 'initial') {
             setWireSize('')
