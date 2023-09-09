@@ -16,10 +16,12 @@
 
 <body class="bg-gradient-to-br from-white to-sky-100 dark:from-[hsl(204,80%,5%)] dark:to-[hsl(204,80%,10%)] dark:text-sky-200 tracking-wider text-lg transition-color duration-[1000ms]">
 
-	<div id="root"></div>
+	<div style="min-height: 100vh;">
+		<div id="root"></div>
+	</div>
 
-	<main id="content" class="relative  mt-64 p-6 pt-24 font-copy bg-sky-50 text-sky-950">
-		<di class="max-w-lg mx-auto grid gap-6">
+	<main id="content" class="relative mt-64 p-6 pt-24 font-copy bg-sky-50 text-sky-950">
+		<div class="max-w-lg mx-auto grid gap-6">
 
 			<h1 class="text-3xl bg-gradient-to-b from-sky-100 to-sky-50 px-4 py-8 rounded-xl">
 				Introducing ElecCalc - Your Ultimate Electrical Calculator App
@@ -73,16 +75,10 @@
 			<a href="https://joshkaye.dev" class="hover:underline">
 				Web app by Josh Kaye
 			</a>
-		</di>
+		</div>
 	</main>
 
 	<script type="module" src="/src/main.jsx"></script>
-
-	<script>
-		const mainContent = document.querySelector('#content')
-		mainContent.style.opacity = '0'
-		setTimeout( () => mainContent.style.opacity = '100', 1000 )
-	</script>
 
 	<script>
 		if ('serviceWorker' in navigator) {
